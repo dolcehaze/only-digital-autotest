@@ -1,4 +1,3 @@
-# test_footer_checks.py
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -22,12 +21,12 @@ def main():
     try:
         driver.get("https://only.digital/")
     except Exception as e:
-        print("⚠️ Ошибка при загрузке страницы:", e)
+        print("Ошибка при загрузке страницы:", e)
 
     try:
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
     except TimeoutException:
-        print("⚠️ Страница не успела загрузиться за 10 секунд, продолжаем проверки...")
+        print("Страница не успела загрузиться за 10 секунд, продолжаем проверки...")
 
     page_src = driver.page_source or ""
     footer = None
@@ -81,11 +80,11 @@ def main():
         print(f"Обнаружено {len(errors)} проблем(ы):")
         for e in errors:
             print(" -", e)
-        print("\n🔔 Тест завершён с ошибками.")
+        print("\nТест завершён с ошибками.")
         driver.quit()
         sys.exit(1)
     else:
-        print("✅ Все проверки футера прошли успешно.")
+        print("Все проверки футера прошли успешно.")
         driver.quit()
         sys.exit(0)
 
